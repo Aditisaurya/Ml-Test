@@ -42,7 +42,7 @@
 </head>
 <body>
   <h2>Stress Level Prediction Form</h2>
-  <form action="/predict" method="POST">
+  <form id="predict-form">
     <label for="gender">Gender</label>
     <select id="gender" name="gender" required>
       <option value="1">Male</option>
@@ -86,7 +86,48 @@
     <label for="systolic_bp">Systolic Blood Pressure</label>
     <input type="number" id="systolic_bp" name="systolic_bp" min="80" max="200" required>
 
-    <button type="submit" value="Predict">Predict Stress Level</button>
+    <button type="submit">Predict Stress Level</button>
   </form>
+
+  <h3>Prediction Result:</h3>
+  <p id="result"></p>
+
+  <script>
+    document.getElementById("predict-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    // Collect form values as an array
+    let features = [
+        parseInt(document.getElementById("gender").value),
+        parseInt(document.getElementById("age").value),
+        parseInt(document.getElementById("occupation").value),
+        parseFloat(document.getElementById("sleep_duration").value),
+        parseInt(document.getElementById("bmi_category").value),
+        parseInt(document.getElementById("heart_rate").value),
+        parseInt(document.getElementById("daily_steps").value),
+        parseInt(document.getElementById("systolic_bp").value)
+    ];
+
+    // Send the request to the Flask API with correct Content-Type
+    let response = await fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"  // This tells Flask to expect JSON data
+        },
+        body: JSON.stringify({ features: features })  // Convert the features to a JSON string
+    });
+
+    // Parse the response from Flask
+    let result = await response.json();
+
+    // Display the result
+    if (result.prediction) {
+        document.getElementById("result").innerText = "Prediction: " + result.prediction;
+    } else {
+        document.getElementById("result").innerText = "Error: " + result.error;
+    }
+});
+
+  </script>
 </body>
 </html>
