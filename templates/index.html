@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stress Level Prediction Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #b9cef0;
+      margin: 2rem;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      padding: 1rem;
+      border: 1px solid #527bd3;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #7e8fe2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2a46d2;
+    }
+  </style>
+</head>
+<body>
+  <h2>Stress Level Prediction Form</h2>
+  <form action="/predict" method="POST">
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+      <option value="1">Male</option>
+      <option value="0">Female</option>
+    </select>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" min="1" max="120" required>
+
+    <label for="occupation">Occupation</label>
+    <select id="occupation" name="occupation" required>
+      <option value="0">Scientist</option>
+      <option value="1">Doctor</option>
+      <option value="2">Accountant</option>
+      <option value="3">Teacher</option>
+      <option value="4">Manager</option>
+      <option value="5">Engineer</option>
+      <option value="6">Sales Representative</option>
+      <option value="7">Salesperson</option>
+      <option value="8">Lawyer</option>
+      <option value="9">Software Engineer</option>
+      <option value="10">Nurse</option>
+    </select>
+
+    <label for="sleep_duration">Sleep Duration (hours)</label>
+    <input type="number" id="sleep_duration" name="sleep_duration" step="0.1" min="0" max="24" required>
+
+    <label for="bmi_category">BMI Category</label>
+    <select id="bmi_category" name="bmi_category" required>
+      <option value="1">Underweight</option>
+      <option value="2">Normal</option>
+      <option value="3">Overweight</option>
+    </select>
+
+    <label for="heart_rate">Heart Rate (bpm)</label>
+    <input type="number" id="heart_rate" name="heart_rate" min="30" max="200" required>
+
+    <label for="daily_steps">Daily Steps</label>
+    <input type="number" id="daily_steps" name="daily_steps" min="0" required>
+
+    <label for="systolic_bp">Systolic Blood Pressure</label>
+    <input type="number" id="systolic_bp" name="systolic_bp" min="80" max="200" required>
+
+    <button type="submit" value="Predict">Predict Stress Level</button>
+  </form>
+</body>
+</html>
