@@ -3,19 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stress Level Prediction Form</title>
+  <title>Stress Level Prediction</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #b9cef0;
-      margin: 2rem;
+      background-color: background: #0f0c29;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+;
+      margin: 0;
+      padding: 0;
     }
-    form {
+    .navbar {
+      background-color:background: #614385;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+
+      padding: 15px;
+      text-align: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .container {
       max-width: 400px;
-      margin: auto;
-      padding: 1rem;
-      border: 1px solid #527bd3;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgb(251, 247, 255);
       border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
     label {
       display: block;
@@ -30,74 +46,123 @@
       border-radius: 4px;
     }
     button {
-      background-color: #7e8fe2;
+      background-color: background: #614385;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;;
       color: white;
       font-size: 16px;
       cursor: pointer;
+      transition: 0.3s;
     }
     button:hover {
-      background-color: #2a46d2;
+      background-color:  background: #0f0c29;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+    }
+    .footer {
+      text-align: center;
+      padding: 15px;
+      background-color: background: #614385;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+      color: white;
+      margin-top: 20px;
+    }
+    .description {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+      display: none;
+    }
+    #result {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
-  <h2>Stress Level Prediction Form</h2>
-  <form id="predict-form">
-    <label for="gender">Gender</label>
-    <select id="gender" name="gender" required>
-      <option value="1">Male</option>
-      <option value="0">Female</option>
-    </select>
+  <div class="navbar">Stress Level Prediction</div>
+  
+  <div class="container">
+    <h2 style="text-align: center;">Fill the Form</h2>
+    <form id="predict-form">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+      </select>
 
-    <label for="age">Age</label>
-    <input type="number" id="age" name="age" min="1" max="120" required>
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" min="1" max="120" required>
 
-    <label for="occupation">Occupation</label>
-    <select id="occupation" name="occupation" required>
-      <option value="0">Scientist</option>
-      <option value="1">Doctor</option>
-      <option value="2">Accountant</option>
-      <option value="3">Teacher</option>
-      <option value="4">Manager</option>
-      <option value="5">Engineer</option>
-      <option value="6">Sales Representative</option>
-      <option value="7">Salesperson</option>
-      <option value="8">Lawyer</option>
-      <option value="9">Software Engineer</option>
-      <option value="10">Nurse</option>
-    </select>
+      <label for="occupation">Occupation</label>
+      <select id="occupation" name="occupation" required>
+        <option value="0">Scientist</option>
+        <option value="1">Doctor</option>
+        <option value="2">Accountant</option>
+        <option value="3">Teacher</option>
+        <option value="4">Manager</option>
+        <option value="5">Engineer</option>
+        <option value="6">Sales Representative</option>
+        <option value="7">Salesperson</option>
+        <option value="8">Lawyer</option>
+        <option value="9">Software Engineer</option>
+        <option value="10">Nurse</option>
+      </select>
 
-    <label for="sleep_duration">Sleep Duration (hours)</label>
-    <input type="number" id="sleep_duration" name="sleep_duration" step="0.1" min="0" max="24" required>
+      <label for="sleep_duration">Sleep Duration (hours)</label>
+      <input type="number" id="sleep_duration" name="sleep_duration" step="0.1" min="0" max="24" required>
 
-    <label for="bmi_category">BMI Category</label>
-    <select id="bmi_category" name="bmi_category" required>
-      <option value="1">Underweight</option>
-      <option value="2">Normal</option>
-      <option value="3">Overweight</option>
-    </select>
+      <label for="bmi_category">BMI Category</label>
+      <select id="bmi_category" name="bmi_category" required>
+        <option value="1">Underweight</option>
+        <option value="2">Normal</option>
+        <option value="3">Overweight</option>
+      </select>
 
-    <label for="heart_rate">Heart Rate (bpm)</label>
-    <input type="number" id="heart_rate" name="heart_rate" min="30" max="200" required>
+      <label for="heart_rate">Heart Rate (bpm)</label>
+      <input type="number" id="heart_rate" name="heart_rate" min="30" max="200" required>
 
-    <label for="daily_steps">Daily Steps</label>
-    <input type="number" id="daily_steps" name="daily_steps" min="0" required>
+      <label for="daily_steps">Daily Steps</label>
+      <input type="number" id="daily_steps" name="daily_steps" min="0" required>
 
-    <label for="systolic_bp">Systolic Blood Pressure</label>
-    <input type="number" id="systolic_bp" name="systolic_bp" min="80" max="200" required>
+      <label for="systolic_bp">Systolic Blood Pressure</label>
+      <input type="number" id="systolic_bp" name="systolic_bp" min="80" max="200" required>
 
-    <button type="submit">Predict Stress Level</button>
-  </form>
+      <button type="submit">Predict Stress Level</button>
+    </form>
 
-  <h3>Prediction Result:</h3>
-  <p id="result"></p>
+    <h3>Prediction Result:</h3>
+    <p id="result"></p>
+    
+    <button onclick="toggleDescription()">Show Stress Levels</button>
+    <div class="description" id="description">
+      <p><strong>Stress Level Scale:</strong></p>
+      <p>0 - Low Stress</p>
+      <p>1 - Mild Stress</p>
+      <p>2 - Moderate Stress</p>
+      <p>3 - High Stress</p>
+      <p>4 - Very High Stress</p>
+      <p>5 - Severe Stress</p>
+      <p>6 - Extreme Stress</p>
+      <p>7 - Critical Stress</p>
+      <p>8 - Maximum Stress</p>
+    </div>
+  </div>
+
+  <div class="footer">&copy; 2025 Stress Detector | Developed with ❤️</div>
 
   <script>
-    document.getElementById("predict-form").addEventListener("submit", async function(event) {
-    event.preventDefault();
+    function toggleDescription() {
+      let desc = document.getElementById("description");
+      desc.style.display = desc.style.display === "none" ? "block" : "none";
+    }
 
-    // Collect form values as an array
-    let features = [
+    document.getElementById("predict-form").addEventListener("submit", async function(event) {
+      event.preventDefault();
+      let features = [
         parseInt(document.getElementById("gender").value),
         parseInt(document.getElementById("age").value),
         parseInt(document.getElementById("occupation").value),
@@ -106,28 +171,22 @@
         parseInt(document.getElementById("heart_rate").value),
         parseInt(document.getElementById("daily_steps").value),
         parseInt(document.getElementById("systolic_bp").value)
-    ];
-
-    // Send the request to the Flask API with correct Content-Type
-    let response = await fetch("/predict", {
+      ];
+      
+      let response = await fetch("/predict", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"  // This tells Flask to expect JSON data
-        },
-        body: JSON.stringify({ features: features })  // Convert the features to a JSON string
-    });
-
-    // Parse the response from Flask
-    let result = await response.json();
-
-    // Display the result
-    if (result.prediction) {
-        document.getElementById("result").innerText = "Prediction: " + result.prediction;
-    } else {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ features: features })
+      });
+      
+      let result = await response.json();
+      if (result.prediction !== undefined) {
+        let stressLevels = ["Low Stress", "Mild Stress", "Moderate Stress", "High Stress", "Very High Stress", "Severe Stress", "Extreme Stress", "Critical Stress", "Maximum Stress"];
+        document.getElementById("result").innerText = "Prediction: " + stressLevels[result.prediction];
+      } else {
         document.getElementById("result").innerText = "Error: " + result.error;
-    }
-});
-
+      }
+    });
   </script>
 </body>
 </html>
